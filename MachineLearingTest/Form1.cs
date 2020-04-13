@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace MachineLearningTest
 {
     public partial class Form1 : Form
     {
-        List<HSBColor> blacks = new List<HSBColor>();
-        List<HSBColor> whites = new List<HSBColor>();
-        public Form1()
+        private String info;
+        private int totalNums = 0;
+        public Form1() 
         {
             InitializeComponent();
             newColor();
@@ -23,14 +24,18 @@ namespace MachineLearningTest
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             Color buttonColor = buttonBlack.BackColor;
-            blacks.Add(new HSBColor(buttonColor.GetHue(), buttonColor.GetSaturation(), buttonColor.GetBrightness()));
+            info += buttonColor.GetHue()+"\t"+buttonColor.GetSaturation()+"\t"+buttonColor.GetBrightness()+"\t"+"0\n";
+            totalNums++;
+            total.Text = totalNums.ToString();
             newColor();
         }
 
         private void buttonWhite_Click(object sender, EventArgs e)
         {
             Color buttonColor = buttonWhite.BackColor;
-            whites.Add(new HSBColor(buttonColor.GetHue(), buttonColor.GetSaturation(), buttonColor.GetBrightness()));
+            info += buttonColor.GetHue() + "\t" + buttonColor.GetSaturation() + "\t" + buttonColor.GetBrightness() + "\t" + "1\n";
+            totalNums++;
+            total.Text = totalNums.ToString();
             newColor();
         }
 
@@ -44,5 +49,13 @@ namespace MachineLearningTest
             buttonBlack.FlatAppearance.MouseOverBackColor = newColor;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@".\info.tsv"))
+            {
+                file.Write(info);
+            }
+        }
     }
 }
