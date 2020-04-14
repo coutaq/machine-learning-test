@@ -11,6 +11,8 @@ Global
 		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
+		REREr|Any CPU = REREr|Any CPU
+		REREr|x64 = REREr|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.Release|x64.ActiveCfg = Release|x64
 		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.Release|x64.Build.0 = Release|x64
+		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.REREr|Any CPU.ActiveCfg = REREr|Any CPU
+		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.REREr|Any CPU.Build.0 = REREr|Any CPU
+		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.REREr|x64.ActiveCfg = REREr|x64
+		{B48CBC8B-05B8-488C-B210-DD64C2BC4940}.REREr|x64.Build.0 = REREr|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
