@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.colorEditor1 = new Cyotek.Windows.Forms.ColorEditor();
             this.text = new System.Windows.Forms.Label();
+            this.colorWheel1 = new Cyotek.Windows.Forms.ColorWheel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,8 +39,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.colorEditor1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.text, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.colorWheel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -48,17 +48,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // colorEditor1
-            // 
-            this.colorEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorEditor1.Location = new System.Drawing.Point(3, 3);
-            this.colorEditor1.Name = "colorEditor1";
-            this.colorEditor1.Size = new System.Drawing.Size(394, 444);
-            this.colorEditor1.TabIndex = 0;
-            this.colorEditor1.ColorChanged += new System.EventHandler(this.colorEditor1_ColorChanged);
             // 
             // text
             // 
@@ -71,6 +60,16 @@
             this.text.TabIndex = 1;
             this.text.Text = "TEXT";
             this.text.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // colorWheel1
+            // 
+            this.colorWheel1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorWheel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorWheel1.Location = new System.Drawing.Point(3, 3);
+            this.colorWheel1.Name = "colorWheel1";
+            this.colorWheel1.Size = new System.Drawing.Size(394, 444);
+            this.colorWheel1.TabIndex = 2;
+            this.colorWheel1.ColorChanged += new System.EventHandler(this.colorWheel1_ColorChanged);
             // 
             // ColorPicker
             // 
@@ -89,7 +88,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Cyotek.Windows.Forms.ColorEditor colorEditor1;
         private System.Windows.Forms.Label text;
+        private Cyotek.Windows.Forms.ColorWheel colorWheel1;
     }
 }

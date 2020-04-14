@@ -18,12 +18,22 @@ namespace MachineLearingTest
             InitializeComponent();
         }
 
-        private void colorEditor1_ColorChanged(object sender, EventArgs e)
+
+        private void colorWheel1_ColorChanged(object sender, EventArgs e)
         {
-            this.text.BackColor = colorEditor1.Color;
-            MlContext mlContext = new MlContext();
-            var predEngine = mlContext.Model.CreatePredictionEngine<SentimentIssue, SentimentPrediction>(trainedModel);
-            var resultprediction = predEngine.Predict(sampleStatement);
+            this.text.BackColor = colorWheel1.Color;
+            // Add input data
+            var input = new ModelInput();
+            input.Hue = colorWheel1.Color.GetHue();
+            input.Brightness = colorWheel1.Color.GetBrightness();
+            input.Saturation = colorWheel1.Color.GetSaturation();
+            // TODO: Make this much faster
+            ModelOutput result = ConsumeModel.Predict(input);
+
+            if (result.Prediction)
+                this.text.ForeColor = Color.White;
+            else
+                this.text.ForeColor = Color.Black;
         }
     }
 }
