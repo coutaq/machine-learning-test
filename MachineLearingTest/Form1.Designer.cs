@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonWhite = new System.Windows.Forms.Button();
@@ -36,8 +37,8 @@
             this.infoText = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonTry = new System.Windows.Forms.Button();
             this.buttonTrain = new System.Windows.Forms.Button();
+            this.buttonTry = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -162,21 +163,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(154, 78);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
-            // buttonTry
-            // 
-            this.buttonTry.BackColor = System.Drawing.Color.BlueViolet;
-            this.buttonTry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonTry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTry.Font = new System.Drawing.Font("Gotham Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTry.ForeColor = System.Drawing.Color.White;
-            this.buttonTry.Location = new System.Drawing.Point(80, 3);
-            this.buttonTry.Name = "buttonTry";
-            this.buttonTry.Size = new System.Drawing.Size(71, 72);
-            this.buttonTry.TabIndex = 3;
-            this.buttonTry.Text = "Try it out!";
-            this.buttonTry.UseVisualStyleBackColor = false;
-            this.buttonTry.Click += new System.EventHandler(this.buttonTry_Click);
-            // 
             // buttonTrain
             // 
             this.buttonTrain.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -192,6 +178,21 @@
             this.buttonTrain.UseVisualStyleBackColor = false;
             this.buttonTrain.Click += new System.EventHandler(this.buttonTrain_Click);
             // 
+            // buttonTry
+            // 
+            this.buttonTry.BackColor = System.Drawing.Color.BlueViolet;
+            this.buttonTry.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonTry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTry.Font = new System.Drawing.Font("Gotham Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTry.ForeColor = System.Drawing.Color.White;
+            this.buttonTry.Location = new System.Drawing.Point(80, 3);
+            this.buttonTry.Name = "buttonTry";
+            this.buttonTry.Size = new System.Drawing.Size(71, 72);
+            this.buttonTry.TabIndex = 3;
+            this.buttonTry.Text = "Try it out!";
+            this.buttonTry.UseVisualStyleBackColor = false;
+            this.buttonTry.Click += new System.EventHandler(this.buttonTry_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,8 +200,10 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Machine Learning";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

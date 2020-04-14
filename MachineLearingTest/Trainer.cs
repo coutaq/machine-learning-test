@@ -39,6 +39,7 @@ namespace MachineLearningTest
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.progressBar1.Value = this.progressBar1.Maximum;
+            this.button2.Visible = true;
             
         }
 
@@ -57,7 +58,7 @@ namespace MachineLearningTest
         private void button2_Click(object sender, EventArgs e)
         {
             new ColorPicker().Show();
-            this.Close();
+            //this.Close();
         }
     }
 }
