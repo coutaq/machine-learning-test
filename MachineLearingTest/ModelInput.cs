@@ -2,7 +2,7 @@
 
 using Microsoft.ML.Data;
 
-namespace MachineLearningTestML.Model
+namespace MachineLearningTest
 {
     public class ModelInput
     {

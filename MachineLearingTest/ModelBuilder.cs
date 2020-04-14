@@ -6,15 +6,14 @@ using System.IO;
 using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using MachineLearningTestML.Model;
 using Microsoft.ML.Trainers.LightGbm;
 
-namespace MachineLearningTestML.ConsoleApp
+namespace MachineLearningTest
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"C:\Users\Michael\source\repos\coutaq\machine-learning-test\MachineLearingTest\bin\x64\Debug\info.csv";
-        private static string MODEL_FILEPATH = @"C:\Users\Michael\AppData\Local\Temp\MLVSTools\MachineLearningTestML\MachineLearningTestML.Model\MLModel.zip";
+        private static string TRAIN_DATA_FILEPATH = Program.dataPath;
+        private static string MODEL_FILEPATH = Program.modelPath;
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
         private static MLContext mlContext = new MLContext(seed: 1);
@@ -33,7 +32,7 @@ namespace MachineLearningTestML.ConsoleApp
             IEstimator<ITransformer> trainingPipeline = BuildTrainingPipeline(mlContext);
 
             // Evaluate quality of Model
-            Evaluate(mlContext, trainingDataView, trainingPipeline);
+            //Evaluate(mlContext, trainingDataView, trainingPipeline);
 
             // Train Model
             ITransformer mlModel = TrainModel(mlContext, trainingDataView, trainingPipeline);
@@ -48,7 +47,7 @@ namespace MachineLearningTestML.ConsoleApp
             var dataProcessPipeline = mlContext.Transforms.Conversion.MapValueToKey("White", "White")
                                       .Append(mlContext.Transforms.Concatenate("Features", new[] { "Hue", "Saturation", "Brightness" }));
             // Set the training algorithm 
-            var trainer = mlContext.MulticlassClassification.Trainers.LightGbm(new LightGbmMulticlassTrainer.Options() { NumberOfIterations = 20, LearningRate = 0.05916024f, NumberOfLeaves = 4, MinimumExampleCountPerLeaf = 1, UseCategoricalSplit = false, HandleMissingValue = true, UseZeroAsMissingValue = true, MinimumExampleCountPerGroup = 200, MaximumCategoricalSplitPointCount = 8, CategoricalSmoothing = 20, L2CategoricalRegularization = 1, UseSoftmax = true, Booster = new GradientBooster.Options() { L2Regularization = 0, L1Regularization = 0.5 }, LabelColumnName = "White", FeatureColumnName = "Features" })
+            var trainer = mlContext.MulticlassClassification.Trainers.LightGbm(new LightGbmMulticlassTrainer.Options() { NumberOfIterations = 20, LearningRate = 0.05916024f, NumberOfLeaves = 4, MinimumExampleCountPerLeaf = 1, UseCategoricalSplit = false, HandleMissingValue = true, MinimumExampleCountPerGroup = 200, MaximumCategoricalSplitPointCount = 8, CategoricalSmoothing = 20, L2CategoricalRegularization = 1, UseSoftmax = true, Booster = new GradientBooster.Options() { L2Regularization = 0, L1Regularization = 0.5 }, LabelColumnName = "White", FeatureColumnName = "Features" })
                                       .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel", "PredictedLabel"));
 
             var trainingPipeline = dataProcessPipeline.Append(trainer);

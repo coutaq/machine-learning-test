@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MachineLearningTestML.Model;
 
 namespace MachineLearningTest
 {
@@ -16,10 +15,12 @@ namespace MachineLearningTest
     {
         private String info = "White, Hue, Saturation, Brightness\n";
         private int totalNums = 0;
+        Trainer trainer;
         public Form1() 
         {
             InitializeComponent();
-            newColor();
+            newColor(); 
+            trainer = new Trainer();
         }
 
         private void buttonBlack_Click(object sender, EventArgs e)
@@ -50,15 +51,20 @@ namespace MachineLearningTest
             buttonBlack.FlatAppearance.MouseOverBackColor = newColor;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonTry_Click(object sender, EventArgs e)
         {
-            /* using (System.IO.StreamWriter file =
-                 new System.IO.StreamWriter(@".\info.csv"))
+            new ColorPicker().Show();
+            this.Close();
+        }
+
+        private void buttonTrain_Click(object sender, EventArgs e)
+        {
+             using (System.IO.StreamWriter file =
+                 new System.IO.StreamWriter(Program.dataPath))
              {
                  file.Write(info);
-             }*/
-            // Add input data
-            new MachineLearingTest.ColorPicker().Show();
+            }
+            trainer.Show();
             this.Close();
         }
     }

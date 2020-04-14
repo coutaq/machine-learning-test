@@ -5,9 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.ML;
-using MachineLearningTestML.Model;
 
-namespace MachineLearningTestML.Model
+namespace MachineLearningTest
 {
     public class ConsumeModel
     {
@@ -20,8 +19,8 @@ namespace MachineLearningTestML.Model
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            string modelPath = @"C:\Users\Michael\AppData\Local\Temp\MLVSTools\MachineLearningTestML\MachineLearningTestML.Model\MLModel.zip";
-            ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
+            
+            ITransformer mlModel = mlContext.Model.Load(Program.modelPath, out var modelInputSchema);
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
             // Use model to make prediction on input data

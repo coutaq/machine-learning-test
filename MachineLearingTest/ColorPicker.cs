@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MachineLearningTestML.Model;
 using Microsoft.ML;
 
-namespace MachineLearingTest
+namespace MachineLearningTest
 {
     public partial class ColorPicker : Form
     {
@@ -25,12 +24,10 @@ namespace MachineLearingTest
         private void colorWheel1_ColorChanged(object sender, EventArgs e)
         {
             this.text.BackColor = colorWheel1.Color;
-            // Add input data
             var input = new ModelInput();
             input.Hue = colorWheel1.Color.GetHue();
             input.Brightness = colorWheel1.Color.GetBrightness();
             input.Saturation = colorWheel1.Color.GetSaturation();
-            // TODO: Make this much faster
             ModelOutput result = predEngine.Predict(input);
 
             if (result.Prediction)

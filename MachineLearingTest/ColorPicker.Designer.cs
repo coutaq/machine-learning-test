@@ -1,7 +1,6 @@
-﻿using MachineLearningTestML.Model;
-using Microsoft.ML;
+﻿using Microsoft.ML;
 
-namespace MachineLearingTest
+namespace MachineLearningTest
 {
     partial class ColorPicker
     {
