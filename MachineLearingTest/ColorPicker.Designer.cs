@@ -1,4 +1,7 @@
-﻿namespace MachineLearingTest
+﻿using MachineLearningTestML.Model;
+using Microsoft.ML;
+
+namespace MachineLearingTest
 {
     partial class ColorPicker
     {
@@ -6,6 +9,8 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        
+        public PredictionEngine<ModelInput, ModelOutput> predEngine = GetPredictionEngine(@"C:\Users\Michael\AppData\Local\Temp\MLVSTools\MachineLearningTestML\MachineLearningTestML.Model\MLModel.zip");
 
         /// <summary>
         /// Clean up any resources being used.
@@ -69,7 +74,7 @@
             this.colorWheel1.Name = "colorWheel1";
             this.colorWheel1.Size = new System.Drawing.Size(394, 444);
             this.colorWheel1.TabIndex = 2;
-            this.colorWheel1.ColorChanged += new System.EventHandler(this.colorWheel1_ColorChanged);
+
             // 
             // ColorPicker
             // 
@@ -77,16 +82,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.colorWheel1.ColorChanged += new System.EventHandler(this.colorWheel1_ColorChanged);
             this.Name = "ColorPicker";
             this.Text = "ColorPicker";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
+            
+        }
+        public static PredictionEngine<ModelInput, ModelOutput> GetPredictionEngine(string modelPath)
+        {
+            MLContext mlContext = new MLContext();
+            ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
+            return mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
         }
 
         #endregion
-
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label text;
         private Cyotek.Windows.Forms.ColorWheel colorWheel1;

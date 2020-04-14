@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MachineLearningTestML.Model;
+using Microsoft.ML;
 
 namespace MachineLearingTest
 {
     public partial class ColorPicker : Form
     {
+
         public ColorPicker()
         {
             InitializeComponent();
+            
         }
 
 
@@ -28,7 +31,7 @@ namespace MachineLearingTest
             input.Brightness = colorWheel1.Color.GetBrightness();
             input.Saturation = colorWheel1.Color.GetSaturation();
             // TODO: Make this much faster
-            ModelOutput result = ConsumeModel.Predict(input);
+            ModelOutput result = predEngine.Predict(input);
 
             if (result.Prediction)
                 this.text.ForeColor = Color.White;
