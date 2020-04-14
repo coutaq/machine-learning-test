@@ -124,6 +124,7 @@
             this.infoText.AutoSize = true;
             this.infoText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.infoText.Font = new System.Drawing.Font("Gotham Medium", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoText.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.infoText.Location = new System.Drawing.Point(82, 0);
             this.infoText.Name = "infoText";
             this.infoText.Size = new System.Drawing.Size(629, 84);
@@ -136,6 +137,7 @@
             this.total.AutoSize = true;
             this.total.Dock = System.Windows.Forms.DockStyle.Fill;
             this.total.Font = new System.Drawing.Font("Gotham Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.ForeColor = System.Drawing.SystemColors.Control;
             this.total.Location = new System.Drawing.Point(3, 0);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(73, 84);
@@ -162,6 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";

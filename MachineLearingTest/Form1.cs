@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MachineLearningTestML.Model;
 
 namespace MachineLearningTest
 {
     public partial class Form1 : Form
     {
-        private String info;
+        private String info = "White, Hue, Saturation, Brightness\n";
         private int totalNums = 0;
         public Form1() 
         {
@@ -24,7 +25,7 @@ namespace MachineLearningTest
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             Color buttonColor = buttonBlack.BackColor;
-            info += buttonColor.GetHue()+"\t"+buttonColor.GetSaturation()+"\t"+buttonColor.GetBrightness()+"\t"+"0\n";
+            info += 0 + "," + buttonColor.GetHue() + "," + buttonColor.GetSaturation() + "," + buttonColor.GetBrightness() + "\n";
             totalNums++;
             total.Text = totalNums.ToString();
             newColor();
@@ -33,7 +34,7 @@ namespace MachineLearningTest
         private void buttonWhite_Click(object sender, EventArgs e)
         {
             Color buttonColor = buttonWhite.BackColor;
-            info += buttonColor.GetHue() + "\t" + buttonColor.GetSaturation() + "\t" + buttonColor.GetBrightness() + "\t" + "1\n";
+            info += 1+","+buttonColor.GetHue() + "," + buttonColor.GetSaturation() + "," + buttonColor.GetBrightness() + "\n";
             totalNums++;
             total.Text = totalNums.ToString();
             newColor();
@@ -51,11 +52,14 @@ namespace MachineLearningTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@".\info.tsv"))
-            {
-                file.Write(info);
-            }
+            /* using (System.IO.StreamWriter file =
+                 new System.IO.StreamWriter(@".\info.csv"))
+             {
+                 file.Write(info);
+             }*/
+            // Add input data
+            new MachineLearingTest.ColorPicker().Show();
+            this.Close();
         }
     }
 }
