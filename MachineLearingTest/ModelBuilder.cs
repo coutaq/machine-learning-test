@@ -14,7 +14,7 @@ namespace MachineLearningTest
     public static class ModelBuilder
     {
         private static string TRAIN_DATA_FILEPATH = Program.dataPath;
-        private static string MODEL_FILEPATH = Program.modelPath; //@".\MLModel.zip"
+        private static string MODEL_FILEPATH = Program.modelPath; //@"MLModel.zip"
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
         private static MLContext mlContext = new MLContext(seed: 1);
@@ -79,8 +79,10 @@ namespace MachineLearningTest
         {
             // Save/persist the trained model to a .ZIP file
             MessageBox.Show(modelRelativePath);
-            mlContext.Model.Save(mlModel, modelInputSchema, GetAbsolutePath(modelRelativePath));
-            Console.WriteLine("The model is saved to {0}", GetAbsolutePath(modelRelativePath));
+            string absolutePath = GetAbsolutePath(modelRelativePath);
+            MessageBox.Show(absolutePath);
+
+            mlContext.Model.Save(mlModel, modelInputSchema, absolutePath);
         }
 
         public static string GetAbsolutePath(string relativePath)

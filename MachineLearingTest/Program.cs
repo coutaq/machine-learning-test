@@ -8,7 +8,7 @@ namespace MachineLearningTest
 {
     static class Program
     {
-        public static string modelPath = @".\MLModel.zip";
+        public static string modelPath = @"MLModel.zip";
         public static string dataPath = @".\info.csv";
         /// <summary>
         /// The main entry point for the application.
